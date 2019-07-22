@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <div id="app">
+      <p>person</p>
+      <div>
+        name: 
+        <p>{{ zhangsan.name }}</p>
+      </div>
+      <p>age: {{ zhangsan.age }}</p>
+      <input type="text" v-model="zhangsan.name" />
+    </div>
+    <script src="../js/Mvvm.js"></script>
+    <script src="../js/Watcher.js"></script>
+    <script src="../js/Dep.js"></script>
+    <script>
+      let mvvm = new Mvvm({
+        el: "#app",
+        data: {
+          zhangsan: { name: "zhangsan", age: 21 },
+          model: 2
+        }
+      });
+    </script>
+  </body>
+</html>

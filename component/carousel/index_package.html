@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>carousel</title>
+    <style>
+        .carousel {
+            margin: 30px auto;
+            max-width: 800px;
+        }
+
+        .carousel .panels {
+            position: relative;
+            height: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .carousel .panels>a {
+            position: absolute;
+            left: 0;
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            object-fit: cover;
+        }
+
+        .carousel .panels>a:first-child {
+            z-index: 10;
+        }
+
+        .carousel .panels img {
+            width: 100%;
+            height: 100%;
+
+        }
+
+        .carousel .dots {
+            text-align: center;
+        }
+
+        .carousel .dots>span {
+            width: 6px;
+            height: 4px;
+            border-radius: 2px;
+            background: #ddd;
+            display: inline-block;
+            transition: width .3s;
+            cursor: pointer;
+        }
+
+        .carousel .dots span.active {
+            background: #aaa;
+            width: 10px;
+        }
+
+        .carousel .action {
+            display: flex;
+            font-size: 12px;
+            color: #666;
+            align-items: center;
+            margin-top: 6px;
+        }
+
+        .carousel .action .pre {
+            order: 1;
+            cursor: pointer;
+        }
+
+        .carousel .action .next {
+            order: 3;
+            cursor: pointer;
+        }
+
+        .carousel .action .dots {
+            order: 2;
+            flex: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="carousel">
+        <div class="panels">
+            <a href="#">
+                <img src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg">
+            </a>
+            <a href="#">
+                <img src="http://cdn.jirengu.com/book.jirengu.com/img/2.jpg">
+            </a>
+            <a href="#">
+                <img src="http://cdn.jirengu.com/book.jirengu.com/img/3.jpg">
+            </a>
+            <a href="#">
+                <img src="http://cdn.jirengu.com/book.jirengu.com/img/4.jpg">
+            </a>
+        </div>
+
+        <div class="action">
+            <span class="pre">上一个</span>
+            <span class="next">下一个</span>
+            <div class="dots">
+                <span class="active"></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+
+        //要封装
+        class Carousel {
+            constructor(root) {
+                this.root = root
+                this.panels = Array.from(root.querySelectorAll('.panels a'))
+                this.dotCt = root.querySelector('.dots')
+                this.dots = Array.from(root.querySelectorAll('.dots span'))
+                this.pre = root.querySelector('.pre')
+                this.next = root.querySelector('.next')
+
+                this.bind()
+            }
+
+            get index() {
+                return this.dots.indexOf(this.root.querySelector('.dots .active'))
+            }
+
+            get preIndex() {
+                return (this.index - 1 + this.dots.length) % this.dots.length
+            }
+
+            get nextIndex() {
+                return (this.index + 1) % this.dots.length
+            }
+
+            bind() {
+                this.dotCt.onclick = e => {
+                    if (e.target.tagName !== 'SPAN') return
+
+                    let index = this.dots.indexOf(e.target)
+                    this.setDot(index)
+                    this.showPage(index)
+                }
+
+                this.pre.onclick = e => {
+                    let index = this.preIndex
+                    this.setDot(index)
+                    this.showPage(index)
+                }
+
+                this.next.onclick = e => {
+                    let index = this.nextIndex
+                    this.setDot(index)
+                    this.showPage(index)
+                }
+            }
+
+            setDot(index) {
+                this.dots.forEach(dot => dot.classList.remove('active'))
+                this.dots[index].classList.add('active')
+            }
+
+            showPage(index) {
+                this.panels.forEach(panel => panel.style.zIndex = 0)
+                this.panels[index].style.zIndex = 10
+            }
+        }
+
+        new Carousel(document.querySelector('.carousel'))
+    </script>
+</body>
+
+</html>

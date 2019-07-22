@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test</title>
+</head>
+<body>
+    <!-- <script>
+        let obj={};
+        let bValue;  //出现一个中转值
+        Object.defineProperty(obj,'school',{
+            configurable:true, //可配置
+            // writable:true, //可写入
+            enumerable:true, //可枚举
+            // value:"school",
+            get(){ //访问器属性 与value writable 不能共存
+                console.log("this is get method")
+                return bValue
+            }, 
+            set(newValue){
+                console.log("this is set method")
+                bValue= newValue;
+                // obj.school=newValue;
+            }
+        })
+        console.log(bValue)
+        obj.school="newSchool"
+        console.log(obj.school);
+        console.log(bValue)
+    </script> -->
+    <script>
+        // 发布订阅模式
+        function Dep(){
+            this.subs=[];
+        }
+        Dep.prototype.addSub=function(sub){
+            this.subs.push(sub);
+        }
+        Dep.prototype.notify=function(){
+            this.subs.forEach(sub=>{
+                sub.update()
+            })
+        }
+
+
+        function Watcher(fn){
+            this.fn=fn;
+        }
+        Watcher.prototype.update=function(){
+            this.fn();
+        }
+
+        let watcher=new Watcher(()=>{
+            alert(1)
+        })
+        let watcher1=new Watcher(()=>{
+            alert(2)
+        })
+
+        let dep=new Dep();
+        dep.addSub(watcher);
+        dep.addSub(watcher1);
+        dep.notify();
+    </script>
+</body>
+</html>

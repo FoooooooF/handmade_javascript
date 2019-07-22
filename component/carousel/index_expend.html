@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>carousel</title>
+    <style>
+        .carousel {
+            margin: 30px auto;
+            max-width: 800px;
+        }
+
+        .carousel .panels {
+            position: relative;
+            height: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .carousel .panels>a {
+            position: absolute;
+            left: 0;
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            object-fit: cover;
+        }
+
+        .carousel .panels>a:first-child {
+            z-index: 10;
+        }
+
+        .carousel .panels img {
+            width: 100%;
+            height: 100%;
+
+        }
+
+        .carousel .dots {
+            text-align: center;
+        }
+
+        .carousel .dots>span {
+            width: 6px;
+            height: 4px;
+            border-radius: 2px;
+            background: #ddd;
+            display: inline-block;
+            transition: width .3s;
+            cursor: pointer;
+        }
+
+        .carousel .dots span.active {
+            background: #aaa;
+            width: 10px;
+        }
+
+        .carousel .action {
+            display: flex;
+            font-size: 12px;
+            color: #666;
+            align-items: center;
+            margin-top: 6px;
+        }
+
+        .carousel .action .pre {
+            order: 1;
+            cursor: pointer;
+        }
+
+        .carousel .action .next {
+            order: 3;
+            cursor: pointer;
+        }
+
+        .carousel .action .dots {
+            order: 2;
+            flex: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="carousel">
+        <div class="panels">
+            <a href="#">
+                <img src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg">
+            </a>
+            <a href="#">
+                <img src="http://cdn.jirengu.com/book.jirengu.com/img/2.jpg">
+            </a>
+            <a href="#">
+                <img src="http://cdn.jirengu.com/book.jirengu.com/img/3.jpg">
+            </a>
+            <a href="#">
+                <img src="http://cdn.jirengu.com/book.jirengu.com/img/4.jpg">
+            </a>
+        </div>
+
+        <div class="action">
+            <span class="pre">上一个</span>
+            <span class="next">下一个</span>
+            <div class="dots">
+                <span class="active"></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+
+        //要封装
+       class Carousel {
+           constractor(root){
+                this.root=document.querySelector(root);
+                this.panels=Array.from(this.root.querySelector('.panels a'));
+                this.dots=Array.from(this.root.querySelector('.dots span'));
+
+                bind();
+           }
+           
+       }
+    </script>
+</body>
+
+</html>
