@@ -31,14 +31,20 @@
         console.log(tar);
         tar.addEventListener(type,cb,false); // 参数1：事件类型,参数2：回调函数,参数3：事件的捕获
     }
-    //在Jquery原型上定义方法
+    //在Jquery原型上定义各种方法
     Jquery.prototype={
-        click:function(fn){
+        click:function(fn){ //点击事件
             console.log(this.event);
             for(var i=0;i<this.event.length;i++){
                 addEvent(this.event[i],"click",fn); //调用事件绑定函数
             }
-        }
+        },
+        css: function(){ //获取和设置css
+			
+		},
+		animate:function(){ //设置动画
+			
+		},
     }
     function $(arg){
         return new Jquery(arg);
