@@ -9,6 +9,7 @@
 在这里给自己定下一个小目标 （flag），希望每周都能够有一个handmade javascript的更新！
 ## 方法 （method）
 1. [Promsie](./method/promise/README.md)
+2. [sort 排序算法](./method/sort/README.md)
 
 ## 组件 （component）
 1. carousel 轮播图组件

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>handmade sort</title>
+</head>
+
+<body>
+    <script>
+        let test = [12, 45, 23, 78, 20, 8]
+        /**
+         * 冒泡排序
+         * 气泡会从水底冒出水面
+         * bubbleSort
+         */
+        function bubbleSort(arr) {
+            for (let i = 0; i < arr.length; i++) {
+                for (let j = 0; j < arr.length - i - 1; j++) {
+                    let temp;
+                    if (arr[j] > arr[j + 1]) {
+                        temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                    }
+                }
+            }
+            return arr;
+        }
+        console.log(bubbleSort(test));
+
+        /**
+         * 插入排序
+         */
+        function insertSort(arr) {
+            for (let i = 1; i < arr.length; i++) {
+                let k = arr[i];
+                let j;
+                for (j = i - 1; j >= 0 && k < arr[j]; j--) {
+
+                    arr[j + 1] = arr[j]
+                    console.log(arr)
+                }
+                arr[j + 1] = k
+            }
+            return arr;
+        }
+        console.log(insertSort(test));
+    </script>
+</body>
+
+</html>
