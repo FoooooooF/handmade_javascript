@@ -7,12 +7,13 @@
 
     在这里给自己定下一个小目标 （flag），希望每周都能够有一个handmade javascript的更新！
 ## 方法 （method）
+1. Promsie
 
 ## 组件 （component）
 1. carousel 轮播图组件
 
 ## 库 （library）
+1. jquery
 
 ## 框架 （frame）
-
-1. vue mvvm框架的的基本实现
+1. mvvm框架的的基本实现 模仿vue

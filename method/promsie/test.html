@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>promsie test</title>
+</head>
+<body>
+    <script src="./promise.js"></script>
+    <script>
+        function test(){
+            return new Promise((resolve,reject)=>{
+                setTimeout(()=>{
+                    resolve()
+                },2000)
+            })
+        }
+        test().then(()=>{
+            console.log(456)
+        }).then(()=>{
+            console.log(123)
+        })
+    </script>
+</body>
+</html>
