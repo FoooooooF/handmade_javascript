@@ -6,7 +6,7 @@
 4. 实现Promsie对象方法 resolve,reject,race,all
 ## promsie流程图
 ![流程图](./assets/776370-20170112213750478-269964759.png)
-##详细步骤
+## 详细步骤
 [BAT前端经典面试问题：史上最最最详细的手写Promise教程 ⭐](https://juejin.im/post/5b2f02cd5188252b937548ab)
 
 
