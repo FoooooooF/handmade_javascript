@@ -10,6 +10,7 @@
     <script src="./promise.js"></script>
     <script>
         function test(){
+            //调用promise 设置excutor函数的两个形参 resolve,reject
             return new Promise((resolve,reject)=>{
                 setTimeout(()=>{
                     resolve()
@@ -17,9 +18,10 @@
             })
         }
         test().then(()=>{
-            console.log(456)
-        }).then(()=>{
             console.log(123)
+            
+        }).then(()=>{
+            console.log(456)
         })
     </script>
 </body>

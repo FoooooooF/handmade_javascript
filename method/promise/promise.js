@@ -1,6 +1,7 @@
 class Promise {
     //构造函数
     constructor(executor) {
+        console.log("is my own promise")
         //初始化state为pending 等待状态  pending/fulfilled/rejected
         this.state = "pending";
         //成功的值
@@ -38,6 +39,7 @@ class Promise {
         }
         // 如果executor执行报错，直接执行reject
         try {
+            // 调用的时候,传入resolve,reject的实参
             executor(resolve, reject);
         } catch (err) {
             reject(err);
@@ -67,7 +69,7 @@ class Promise {
                     }catch(e){
                         reject(e);
                     }    
-                }, );
+                }, 0);
                 
 
             };
