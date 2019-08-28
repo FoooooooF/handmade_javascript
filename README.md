@@ -12,7 +12,7 @@
 2. [sort 排序算法](./method/sort/README.md)
 
 ## 组件 （component）
-1. carousel 轮播图组件
+1. [carousel 无限轮播图](./component/carousel/README.md)
 
 ## 库 （library）
 1. jquery
