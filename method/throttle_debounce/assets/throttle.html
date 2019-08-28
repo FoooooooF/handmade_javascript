@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>throttle 节流</title>
+</head>
+<style>
+#box{
+    background-color: #999;
+    width: 500PX;
+    height: 300px;
+    font-size: 50px;
+    text-align: center;
+    line-height: 300px;
+    color: #333;
+}
+</style>
+<body>
+    <div id="box">
+        0
+    </div>
+    <script>
+        //1. 没有节流
+        /*************
+        let index=0;
+        box.onmousemove =function(){
+            box.innerHTML=index++
+        }
+        **************/
+
+        //2.来一个时间戳实现的节流函数
+        function throttle(func,wait){
+            var context, args;
+            var previous=0;
+            console.log(this);
+            return function(){
+                var now=new Date();
+                context=this;
+                args=arguments;
+                if(now-previous>wait){
+                    func.apply(context,args);
+                    previous=now;
+                }
+            }
+        }
+        var index=0;
+        box.onmousemove =throttle(function(){
+            box.innerHTML=index++
+        },500)
+
+    </script>
+</body>
+</html>

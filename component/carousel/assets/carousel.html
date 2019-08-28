@@ -107,13 +107,15 @@
             let panels = Array.from(document.getElementsByClassName('carousel-board-item'))
             board.style.left = "-400px";
             let index = 1; //设置默认的index值
-            prev.addEventListener("click", function () {
+            prev.addEventListener("click",throttle(function () {
                 index++
                 console.log(index);
                 animate(-400);
                 //如果当前在 1fake 的位置
                 if (index === panels.length - 1) {
+                    
                     setTimeout(() => {
+                        console.log("settimeout")
                         board.style.transition = "0s";
                         let width = 4 * 400
                         board.style.left = parseInt(board.style.left) + width + "px"
@@ -121,12 +123,13 @@
                     index = 1;
                 }
 
-            })
-            next.addEventListener("click", () => {
+            }, 500) )
+            next.addEventListener("click",throttle( () => {
                 index--
                 console.log(index);
                 animate(400);
                 if (index === 0) {
+                    console.log("settimeout")
                     setTimeout(() => {
                         board.style.transition = "0s";
                         let width = -4 * 400
@@ -134,12 +137,29 @@
                     }, 600)
                     index = 4;
                 }
-            })
+            }, 500))
 
+            // 节流函数 防止点击过快出现空白
             function animate(width = 400) {
                 board.style.transition = "0.5s";
                 board.style.left || (board.style.left = 0)
                 board.style.left = parseInt(board.style.left) + width + "px";
+            }
+
+           // 节流函数 防止点击过快出现空白
+            function throttle(func, wait) {
+                var context, args;
+                var previous = 0;
+
+                return function() {
+                    var now = +new Date();
+                    context = this;
+                    args = arguments;
+                    if (now - previous > wait) {
+                        func.apply(context, args);
+                        previous = now;
+                    }
+                }
             }
         })()
     </script>
