@@ -3,277 +3,146 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>轮播图效果</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>carousel</title>
     <style>
-        #banner,
-        #banner li {
-            list-style: none;
-            margin: 0;
-            padding: 0;
+        body {
+            box-sizing: border-box;
         }
 
-        #banner {
-            position: absolute;
-
-        }
-
-        #banner li {
-            float: left;
-        }
-
-        #banner li img {
-            display: block;
-        }
-
-
-        /*设置父元素定位*/
-        #container {
+        .carousel {
             position: relative;
-            /*为了给左右按钮 和小圆点*/
+            width: 400px;
+            height: 300px;
+            /* overflow-x: scroll; */
+            overflow: hidden;
         }
 
+        .carousel-board {
+            /* position: absolute; */
+            position: relative;
+            list-style: none;
+            width: 5000px;
+            height: 300px;
+            padding: 0;
+            left: 0;
+            /* transition: left 0.5s linear; */
 
-        /*小圆点*/
-        #buttons {
+        }
+
+        .carousel-board-item {
+            float: left;
+            width: 400px;
+            height: 300px;
+            line-height: 300px;
+            text-align: center;
+            font-size: 30px;
+        }
+
+        .carousel-btn {
             position: absolute;
-            /*小圆点绝对定位*/
-            height: 10px;
-            width: 100px;
-            bottom: 20px;
-            /*距离底部20px*/
+            z-index: 100;
+            cursor: pointer;
+        }
+
+        .carousel-prev {
+            top: 50%;
+            left: 10px;
+        }
+
+        .carousel-next {
+            top: 50%;
+            right: 10px;
+        }
+
+        .carousel-dots {
+            padding: 0;
+            /* width: 100px; */
+            list-style: none;
+            position: absolute;
+            bottom: 10px;
             left: 50%;
-            /*左右居中显示*/
+            margin-left: -24px;
             z-index: 100;
         }
 
-        #buttons span {
-            cursor: pointer;
+        .carousel-dots li {
             float: left;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            /*设置成圆*/
-            background: #333;
-            margin-right: 5px;
-        }
-
-        #buttons .on {
-            background: orangered;
-        }
-
-        /*左右按钮*/
-        .arrow {
+            width: 8px;
+            height: 8px;
+            background-color: #aaa;
+            margin-right: 4px;
+            border-radius: 4px;
             cursor: pointer;
-            display: none;
-            /*设置暂时不显示*/
-            height: 40px;
-            line-height: 40px;
-            text-align: center;
-            font-size: 36px;
-            font-weight: bold;
-            width: 40px;
-            height: 40px;
-            position: absolute;
-            z-index: 200;
-            top: 180px;
-            background: RGBA(0, 0, 0, .3);
-            /*背景透明度*/
-            color: #fff;
-        }
-
-        #prev {
-            left: 20px;
-        }
-
-        #next {
-            right: 20px;
-        }
-
-        #container:hover .arrow {
-            display: block;
         }
     </style>
 </head>
 
 <body>
-
-    <div id="container">
-        <!--图片-->
-        <ul id="banner">
-
-            <li>
-                <a href="#">
-                    <img src="http://cdn.jirengu.com/book.jirengu.com/img/4.jpg">
-                    <!--为了实现无缝自动轮播：第一张插入图片5-->
-                    <!--最后一张之后，插入图片1-->
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg">
-                </a>
-            </li>
-
-            <li>
-                <a href="#">
-                    <img src="http://cdn.jirengu.com/book.jirengu.com/img/2.jpg">
-                </a>
-            </li>
-
-            <li>
-                <a href="#">
-                    <img src="http://cdn.jirengu.com/book.jirengu.com/img/3.jpg">
-                </a>
-            </li>
-
-            <li>
-                <a href="#">
-                    <img src="http://cdn.jirengu.com/book.jirengu.com/img/4.jpg">
-                </a>
-            </li>
-
-            <li>
-                <a href="#">
-                    <img src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg">
-                    <!--最后一张之后，插入图片1-->
-                </a>
-            </li>
+    <div class="carousel">
+        <ul class="carousel-board">
+            <li class="carousel-board-item" style="background-color:green">4</li>
+            <li class="carousel-board-item" style="background-color:red">1</li>
+            <li class="carousel-board-item" style="background-color:yellow">2</li>
+            <li class="carousel-board-item" style="background-color:blue">3</li>
+            <li class="carousel-board-item" style="background-color:green">4</li>
+            <li class="carousel-board-item" style="background-color:red">1</li>
         </ul>
-
-        <!--伴随移动的小圆点-->
-        <div id="buttons">
-            <span index="1" class="on"></span>
-            <span index="2"></span>
-            <span index="3"></span>
-            <span index="4"></span>
-            <!-- <span index="5"></span> -->
-        </div>
-        <a href="javascript:;" id="prev" class="arrow">&lt;</a>
-        <!--向左-->
-        <a href="javascript:;" id="next" class="arrow">&gt;</a>
-        <!--向右-->
-
+        <span class="carousel-btn carousel-prev">
+            <</span> <span class="carousel-btn carousel-next">>
+        </span>
+        <ul class="carousel-dots">
+            <li date-index="1"></li>
+            <li date-index="2"></li>
+            <li date-index="3"></li>
+            <li date-index="4"></li>
+        </ul>
     </div>
-</body>
-<script>
-    window.onload = function () {
-        var container = document.getElementById("container");
-        var banner = document.getElementById("banner");
-        var li = document.querySelectorAll("#banner li");
-        var spanNode = document.querySelectorAll("#buttons span");
-        var img = document.getElementsByTagName("img")[0];
-
-        //前后按钮
-        var prev = document.getElementById('prev');
-        var next = document.getElementById('next');
-
-        //索引
-        var index = 1;
-
-        var timer = 0;
-
-        //给 container 设置宽，高，以及overflow:hidder
-        console.log(img.offsetWidth,img.offsetHeight);
-        container.style.width = img.offsetWidth + "px";
-        container.style.height = img.offsetHeight + "px";
-        container.style.overflow = "hidden";
-
-        //给banner 设置宽高
-        banner.style.height = img.offsetHeight + "px";
-        banner.style.width = img.offsetWidth * li.length + "px";
-        banner.style.left = "-480px";
-
-
-
-        //轮播图
-
-        function animate(offset) {
-            banner.style.transition = "0.5s";
-            banner.style.left = -parseInt(offset) * index + "px";
-        }
-
-        next.onclick = function () {
-            //点击下一页：移动
-            if (index == spanNode.length) {
-                index = 0;
-
-            }
-            index++;
-            console.log("索引index:" + index);
-
-            animate(img.offsetWidth)
-            showButton()
-
-        }
-
-        prev.onclick = function () {
-            if (index == 1) {
-                index = li.length - 1;
-
-            }
-            index--;
-            animate(img.offsetWidth)
-            showButton()
-
-        }
-
-
-        function showButton() {
-
-            for (var i = 0; i < spanNode.length; i++) {
-
-                spanNode[i].className = '';
-
-            }
-            console.log("小圆点的index值：" + index);
-            spanNode[index - 1].className = "on";
-
-        }
-
-
-        //自动轮播
-
-        function play() {
-            timer = setInterval(function () {
-                banner.style.transition = "none";
-                setTimeout(function () {
-
-                    next.onclick();
-
-
-                }, 200)
-            }, 1500);
-        }
-
-
-
-        //当鼠标移动上去的时候:点击事件与轮播事件冲突
-
-        container.onmouseover = function () {
-            //清除定时器
-            clearInterval(timer);
-        }
-        container.onmouseout = function () {
-            play()
-        }
-
-        //鼠标点击对应小圆点：自动切换
-        function ButtonImage() {
-            for (var i = 0; i < spanNode.length; i++) {
-                spanNode[i].onclick = function () {
-                    var myIndex = parseInt(this.getAttribute('index'));
-                    index = myIndex;
-                    animate(img.offsetWidth);
-                    showButton();
+    <script>
+        (function () {
+            let prev = document.getElementsByClassName("carousel-prev")[0];
+            let next = document.getElementsByClassName("carousel-next")[0];
+            let board = document.getElementsByClassName("carousel-board")[0];
+            let panels = Array.from(document.getElementsByClassName('carousel-board-item'))
+            board.style.left = "-400px";
+            let index = 1; //设置默认的index值
+            prev.addEventListener("click", function () {
+                index++
+                console.log(index);
+                animate(-400);
+                //如果当前在 1fake 的位置
+                if (index === panels.length - 1) {
+                    setTimeout(() => {
+                        board.style.transition = "0s";
+                        let width = 4 * 400
+                        board.style.left = parseInt(board.style.left) + width + "px"
+                    }, 600)
+                    index = 1;
                 }
 
+            })
+            next.addEventListener("click", () => {
+                index--
+                console.log(index);
+                animate(400);
+                if (index === 0) {
+                    setTimeout(() => {
+                        board.style.transition = "0s";
+                        let width = -4 * 400
+                        board.style.left = parseInt(board.style.left) + width + "px"
+                    }, 600)
+                    index = 4;
+                }
+            })
+
+            function animate(width = 400) {
+                board.style.transition = "0.5s";
+                board.style.left || (board.style.left = 0)
+                board.style.left = parseInt(board.style.left) + width + "px";
             }
+        })()
+    </script>
+</body>
 
-        }
-        ButtonImage()
-
-
-
-    }
-</script>
 </html>
