@@ -9,6 +9,7 @@
 3. 实现无限滚动 
    - 当页面滚动到`1fake` 时,在滚动完成后,将left值设置到`1`的位置(此处没有动画,用户无法察觉);
    - 同理,当页面滚动到`4fake` 时,在滚动完成后,将left值设置到`4`的位置(此处也没有动画);
+
 ### 1. 页面布局
 
 ```html
@@ -81,6 +82,9 @@
         cursor: pointer;
     }
 </style>
+```
+
+```html
 <div class="carousel">
     <ul class="carousel-board">
         <li class="carousel-board-item" style="background-color:green">4</li>
@@ -100,6 +104,7 @@
     </ul>
 </div>
 ```
+
 ### 2. 点击prev和next 实现简单的左右滑动
 ```js
 (function(){
@@ -119,6 +124,7 @@
     }
 })()
 ```
+
 ### 3 实现无缝轮播
 > 改造一下js,当到达`4fake`的位置,默默切换到`4`,到达`1fake`的位置,默默切换到`1`
 ```js
