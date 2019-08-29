@@ -11,7 +11,6 @@
 function throttle(func,wait){
     var context, args;
     var previous=0;
-    console.log(this);
     return function(){
         var now=new Date();
         context=this;
@@ -23,7 +22,7 @@ function throttle(func,wait){
     }
 }
 ```
-
+函数中的this,指向调用函数的对象
 
 # reference
 1. [JavaScript专题之跟着underscore学防抖(实现步骤清晰) ](https://github.com/mqyqingfeng/Blog/issues/22)
