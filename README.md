@@ -10,6 +10,7 @@
 ## 方法 （method）
 1. [Promsie](./method/promise/README.md)
 2. [sort 排序算法](./method/sort/README.md)
+3. [防抖与节流](./method/throttle_debounce)
 
 ## 组件 （component）
 1. [carousel 无限轮播图](./component/carousel)
