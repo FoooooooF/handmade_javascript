@@ -1,5 +1,6 @@
 # 原生JS手写无缝无限轮播 carousel
-[演示地址](https://fooooooof.github.io/handmade_javascript/component/carousel/assets/carousel.html) :star:
+[演示地址](https://fooooooof.github.io/handmade_javascript/component/carousel/assets/carousel.html)
+
 [github 源码](https://github.com/FoooooooF/handmade_javascript/tree/master/component/carousel)
 ## 原理
 ![carousel示例图](https://github.com/FoooooooF/handmade_javascript/raw/master/component/carousel/assets/carousel.png)
