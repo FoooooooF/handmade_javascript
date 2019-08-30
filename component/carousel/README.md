@@ -2,7 +2,8 @@
 [演示地址](https://fooooooof.github.io/handmade_javascript/component/carousel/assets/carousel.html) :star:
 [github 源码](https://github.com/FoooooooF/handmade_javascript/tree/master/component/carousel)
 ## 原理
-![carousel示例图](./assets/carousel.png)
+![carousel示例图](https://github.com/FoooooooF/handmade_javascript/raw/master/component/carousel/assets/carousel.png)
+
 
 本例 固定为4张图的轮播图,主要为便于阐述原理.
 1. 首先页面布局,重点实现如上图所示的滚动内容(board)结构
