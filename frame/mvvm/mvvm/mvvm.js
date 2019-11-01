@@ -7,7 +7,7 @@ function Vue(options={}){
     // 数据劫持
     observe(data);
 
-    //数据代理
+    //数据代理 将定义在this._data中的数据全部定义到this（vue 实例）上
     // 通过 vue实例代理vue._data
     //vue._data.a -> vue.a
     for(let key in data){
