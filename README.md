@@ -15,9 +15,16 @@
 
 ## 组件 （component）
 1. [carousel 无限轮播图](./component/carousel)
+2. [瀑布流]((./component/waterfall))
 
 ## 库 （library）
-1. jquery
+1. zepto
 
 ## 框架 （frame）
 1. mvvm框架的的基本实现 模仿vue
+
+## 参考
+1. [Javascript 设计模式](https://www.kancloud.cn/kancloud/learn-js-design-patterns/56451)
+2. [jsmini library](https://github.com/jsmini)
+3. [前端组件库](https://www.cnblogs.com/liuzhibin/p/5944821.html)
+4. [frontend-dev-bookmarks](https://github.com/dypsilon/frontend-dev-bookmarks)
