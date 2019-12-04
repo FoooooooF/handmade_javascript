@@ -15,7 +15,8 @@
 
 ## 组件 （component）
 1. [carousel 无限轮播图](./component/carousel)
-2. [瀑布流]((./component/waterfall))
+2. [瀑布流](./component/waterfall)
+3. [Calender 日历](./component/calender)
 
 ## 库 （library）
 1. zepto
