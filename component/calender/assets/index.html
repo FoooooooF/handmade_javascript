@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calender</title>
+    <style>
+        .days {
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .days-week {
+            box-sizing: border-box;
+            width: 14.28571%;
+            min-height: 30px;
+            line-height: 30px;
+            text-align: center;
+            color: #333;
+            font-weight: bold;
+            border: 1px solid #eee;
+        }
+        .days-item {
+            box-sizing: border-box;
+            width: 14.28571%;
+            min-height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border: 1px solid #eee;
+        }
+
+        .days-item:hover {
+            background-color: #eee;
+        }
+
+        .prevmonth {
+            color: #ccc;
+        }
+
+        .nextmonth {
+            color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+    <script>
+        (function () {
+            function createCalenderArr(year, month) {
+                //放置每天的数据
+                let dayarr = [];
+                //这个月的第一天星期几 注意星期天getDay为0
+                let themonth1stday = (new Date(year, month - 1, 1)).getDay() === 0 ? 6 : (new Date(year, month - 1,
+                    1)).getDay() ;
+
+                //下一个月的年月
+                let y = month == 12 ? year + 1 : year; //下一月所在的年
+                let m = month == 12 ? 1 : month; //下一个月
+
+                //上一个月的年月
+                let _y = month == 1 ? year - 1 : year; //上一月所在的年
+                let _m = month == 1 ? 12 : month - 1; //上一个月
+
+                //本月的最后一天是几号
+                let themonthdaysamount = new Date(new Date(y, m, 1) - 1).getDate() //日期对象减去常数表示得到时间戳。减去1表示减去1毫秒。
+                //上月的最后一天是几号
+                let prevmonthlastdate = new Date(new Date(year, month - 1, 1) - 1).getDate();
+
+                //这个月的第一天星期几，就要放入几个上个月的尾巴
+                while (themonth1stday-- > 0) {
+                    let count = prevmonthlastdate--;
+                    dayarr.unshift({
+                        "day": count,
+                        "year": _y,
+                        "month": _m,
+                        "prevmonth": true,
+                        "date": _y + '-' + (parseInt(_m) + 100).toString().slice(-2) + '-' + (count + 100)
+                            .toString()
+                            .slice(-2)
+                    });
+                }
+                //放置本月的日期
+                let count1 = 0;
+                while (themonthdaysamount-- > 0) {
+                    dayarr.push({
+                        "day": ++count1,
+                        "year": year,
+                        "month": month,
+                        "date": year + '-' + (parseInt(month) + 100).toString().slice(-2) + '-' + (count1 +
+                                100)
+                            .toString()
+                            .slice(-2)
+                    });
+                }
+
+                //补足42项
+                let count2 = 1;
+                if (dayarr.length < 42) {
+                    while (dayarr.length != 42) {
+                        dayarr.push({
+                            "day": count2++,
+                            "nextmonth": true,
+                            "year": y,
+                            "month": m,
+                            "date": y + '-' + (parseInt(m) + 100).toString().slice(-2) + '-' + (count2 +
+                                    100)
+                                .toString()
+                                .slice(-2)
+                        });
+                    }
+                }
+                return dayarr;
+            }
+            function createHtml(year, month) {
+                let dayarr = createCalenderArr(year, month);
+                let html = "<ul class='days'>"
+                let weeks=["一","二","三","四","五","六","日"];
+                weeks.forEach(v=>{
+                    html+=`<li class='days-week'>${v}</li>`
+                })
+                dayarr.forEach(v => {
+                    html +=
+                        `<li class='days-item ${v.nextmonth?"nextmonth":v.prevmonth?"prevmonth":""}' data-date=${v.date} data-year=${v.year} data-month=${v.month} data-day=${v.day} title=${v.date} >${v.day}</li>`
+                })
+                html += "</ul>"
+                return html;
+            }
+            let App = document.getElementById("app");
+            App.innerHTML = createHtml(2019,12);
+            let days = document.getElementsByClassName("days")[0];
+            days.addEventListener("click", () => {
+                if (event.target.nodeName.toLowerCase() === "li"&& (event.target.dataset.date)) {
+                    alert(event.target.dataset.date);
+                }
+            })
+        })()
+    </script>
+</body>
+
+</html>
