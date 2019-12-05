@@ -54,8 +54,8 @@
     <script>
         (function () {
             function createCalenderArr(year, month) {
-                //放置每天的数据
-                let dayarr = [];
+                //length为42的数组，放置每天的数据
+                let dayarr = []; 
                 //这个月的第一天星期几 注意星期天getDay为0
                 let themonth1stday = (new Date(year, month - 1, 1)).getDay() === 0 ? 6 : (new Date(year, month - 1,
                     1)).getDay() ;

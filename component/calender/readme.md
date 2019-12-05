@@ -5,11 +5,14 @@
 1. 计算设定月第一天是星期几
 2. 计算的设定月上一个月和下一个月的年份和月份
 3. 计算设定月和上一个月的最后一天是几号
+
+![img](./assets/example.png)
+
 ```js
     // 设定的年月
     let year=2019;
     let month=12;
-    //这个月的第一天星期几
+    //这个月的第一天星期几 注意星期天getDay为0
     let themonth1stday = (new Date(year, month - 1, 1)).getDay() === 0 ? 7 : (new Date(year, month - 1,
         1)).getDay() + 1;
 
