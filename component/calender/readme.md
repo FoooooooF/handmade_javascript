@@ -1,5 +1,6 @@
 # Calender 日历
 > js原生手写日历组件
+_[实例](./assets/index.html)_
 
 ## 关键步骤
 1. 计算设定月第一天是星期几
@@ -14,7 +15,7 @@
     let month=12;
     //这个月的第一天星期几 注意星期天getDay为0
     let themonth1stday = (new Date(year, month - 1, 1)).getDay() === 0 ? 7 : (new Date(year, month - 1,
-        1)).getDay() + 1;
+        1)).getDay();
 
     //下一个月的年月
     let y = month == 12 ? year + 1 : year; //下一月所在的年

@@ -29,3 +29,4 @@
 2. [jsmini library](https://github.com/jsmini)
 3. [前端组件库](https://www.cnblogs.com/liuzhibin/p/5944821.html)
 4. [frontend-dev-bookmarks](https://github.com/dypsilon/frontend-dev-bookmarks)
+5. [JavaScript 手写代码无敌秘籍](https://mp.weixin.qq.com/s/V2XGpWzmCYN0h-pFv1hxXA)

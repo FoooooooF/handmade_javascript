@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MVVM</title>
+</head>
+<body>
+    <div id="app">
+        <p>这是a.a {{a.a}}</p>
+        <p>这是b {{b}}</p>
+        <input type="text" v-model="b">
+        
+    </div>
+    <script src="./mvvm1/mvvm.js"></script>
+    <script>
+        let vue=new Vue({
+            el:"#app",
+            data:{a:{a:"this is a"},b:"this is b"}
+        })
+    </script>
+    
+</body>
+</html>

@@ -57,7 +57,7 @@
                 //length为42的数组，放置每天的数据
                 let dayarr = []; 
                 //这个月的第一天星期几 注意星期天getDay为0
-                let themonth1stday = (new Date(year, month - 1, 1)).getDay() === 0 ? 6 : (new Date(year, month - 1,
+                let themonth1stday = (new Date(year, month - 1, 1)).getDay() === 0 ? 7 : (new Date(year, month - 1,
                     1)).getDay() ;
 
                 //下一个月的年月
@@ -74,7 +74,7 @@
                 let prevmonthlastdate = new Date(new Date(year, month - 1, 1) - 1).getDate();
 
                 //这个月的第一天星期几，就要放入几个上个月的尾巴
-                while (themonth1stday-- > 0) {
+                while (--themonth1stday > 0) {
                     let count = prevmonthlastdate--;
                     dayarr.unshift({
                         "day": count,
@@ -133,7 +133,7 @@
                 return html;
             }
             let App = document.getElementById("app");
-            App.innerHTML = createHtml(2019,12);
+            App.innerHTML = createHtml(2020,6);
             let days = document.getElementsByClassName("days")[0];
             days.addEventListener("click", () => {
                 if (event.target.nodeName.toLowerCase() === "li"&& (event.target.dataset.date)) {
