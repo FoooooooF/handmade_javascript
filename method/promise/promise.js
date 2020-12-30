@@ -17,6 +17,7 @@ class Promise {
         //成功
         let resolve = (value) => {
             if (this.state === "pending") {
+                console.log("resolve")
                 //resolve调用后,state转化为成功态
                 this.state = "fulfilled";
                 // 储存成功的值
@@ -29,6 +30,7 @@ class Promise {
         //失败
         let reject = (reason) => {
             if (this.state === "pending") {
+                console.log("reject")
                 //resolve调用后,state转化为失败
                 this.state = "rejected";
                 // 储存失败的值
@@ -100,7 +102,7 @@ class Promise {
                     
                 })
                 //onRejected 传入失败数组
-                this.onResolvedCallbacks.push(() => {
+                this.onRejectedCallbacks.push(() => {
                     setTimeout(()=>{
                         try{
                             let x=onRejected(this.reason);
@@ -115,6 +117,10 @@ class Promise {
         // 返回promise2,完成链式调用
         return promise2
     }
+
+    catch(errCallback){ // 用来捕获错误 ， 语法糖
+    return this.then(null,errCallback)
+    }
 }
 //处理上一个 return 数据和promsie2的关系
 function resolvePromise(promise2,x,resolve,reject){
@@ -126,14 +132,14 @@ function resolvePromise(promise2,x,resolve,reject){
     let called=false;
 
     //x不是null 且x是对象或者函数
-    if(x!=null&&(typeof x==='object'||typeof x==='function')){
+    if(typeof x==='function'||(typeof x==='object'&&x!=null)){
         try {
             let then=x.then;
             if(typeof then==='function'){ //如果x依然是一个promise
                 then.call(x,y=>{
                     if(called) return;
                     called=true;
-                    resolvePromise(promsie2,y,resolve,reject);
+                    resolvePromise(promise2,y,resolve,reject);
                 },err=>{
                     if(called) return;
                     called=true;
