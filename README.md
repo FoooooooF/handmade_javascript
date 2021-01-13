@@ -1,7 +1,7 @@
 # Handmade Javascript
 >这是一个Handmade Javascript的合集，里面存放一些用原生javascript手写的一些方法，组件，库，或者框架。
 
-当然这些内容可能不够完美，但是我希望能够记录这些方法（method），组件（component），库（library），或者框架（frame）的基本原理和实现过程。
+当然这些内容可能不够完美，但是我希望能够记录这些方法（method），组件（component），库（library），或者框架（frame）的核心原理。
 
 每一部分Handmade Javascript 都会有一个文件夹，其中:
 - README 文件用来记录实现思路和步骤;
