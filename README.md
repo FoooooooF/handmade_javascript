@@ -24,6 +24,9 @@
 ## 框架 （frame）
 1. mvvm框架的的基本实现 模仿vue
 
+## Git
+1. tag test
+
 ## 参考
 1. [Javascript 设计模式](https://www.kancloud.cn/kancloud/learn-js-design-patterns/56451)
 2. [jsmini library](https://github.com/jsmini)
