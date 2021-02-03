@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>promsie test</title>
 </head>
+
 <body>
-    <script src="./promise.js"></script>
+    <script src="./promise6.js"></script>
     <script>
-        function test(i){
+        function test1(i) {
             //调用promise 设置excutor函数的两个形参 resolve,reject
-            return new Promise((resolve,reject)=>{
-                setTimeout(()=>{
+            return new Mypromise((resolve, reject) => {
+                setTimeout(() => {
                     resolve(i)
-                },1000)
+                }, 1000)
             })
         }
         // test(1).then((a)=>{
@@ -24,13 +26,29 @@
         //     console.log(a)
         // })
 
-        function test2(i){
+        function test2(i) {
             //调用promise 设置excutor函数的两个形参 resolve,reject
-            return new Promise((resolve,reject)=>{
+            return new Mypromise((resolve, reject) => {
                 resolve(i)
             })
         }
-        test2(1).then(a=>{console.log(a);return test2(2)}).then(b=>console.log(b)).then(res=>console.log(res))
+        test1(1).then(a => {
+            console.log(a);
+            return test1(2)
+        }).then(
+            b => console.log(b)
+        ).then(
+            res => console.log(res)
+        )
+        function Test(){
+            let a=11;
+            let b=22;
+            this.c=a+b
+        }
+        Test.prototype.then=456;
+        let c=new Test();
+        console.log(c);
     </script>
 </body>
+
 </html>

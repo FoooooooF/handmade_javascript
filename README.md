@@ -25,7 +25,7 @@
 1. mvvm框架的的基本实现 模仿vue
 
 ## Git
-1. tag test
+1. [tag 的作用] (https://blog.csdn.net/qq_32452623/article/details/73949509)
 
 ## 参考
 1. [Javascript 设计模式](https://www.kancloud.cn/kancloud/learn-js-design-patterns/56451)

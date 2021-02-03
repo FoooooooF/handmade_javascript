@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>virtual dom</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script>
+        let vdom = {
+            tag: 'div',
+            props: {
+                class: 'app',
+                name:"app"
+            },
+            children: [{
+                tag: 'p',
+                props: {
+                    className: 'text',
+                    style:"background-color:red;"
+                },
+                children: [
+                    'hello world!!!'
+                ]
+            }]
+        }
+
+        function render(vdom) {
+            // 如果是字符串或者数字，创建一个文本节点
+            if (typeof vdom === 'string' || typeof vdom === 'number') {
+                return document.createTextNode(vdom)
+            }
+            const {
+                tag,
+                props,
+                children
+            } = vdom
+            // 创建真实DOM
+            const element = document.createElement(tag)
+            // 设置属性
+            setProps(element, props)
+            // 遍历子节点，并获取创建真实DOM，插入到当前节点
+            children.forEach((el)=>{element.appendChild(render(el))})
+                
+            // 遍历子节点，并获取创建真实DOM，插入到当前节点
+            // children
+            //     .map(render)
+            //     .forEach(element.appendChild.bind(element))
+            // 虚拟 DOM 中缓存真实 DOM 节点
+            vdom.dom = element
+
+            // 返回 DOM 节点
+            return element
+        }
+
+        function setProps(element, props) {
+            Object.entries(props).forEach(([key, value]) => {
+                setProp(element, key, value)
+            })
+        }
+
+        function setProp(element, key, vlaue) {
+            element.setAttribute(
+                // className使用class代替
+                key === 'className' ? 'class' : key,
+                vlaue
+            )
+        }
+        document.getElementById('app').appendChild(render(vdom));
+    </script>
+</body>
+
+</html>
