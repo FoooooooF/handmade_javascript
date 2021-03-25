@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>MVVM</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- 双向数据绑定 靠的是表单 -->
+      <input type="text" v-model="message" />
+      <div>{{message}}</div>
+      <ul>
+        <li>{{message}} {{age}}</li>
+      </ul>
+      {{message}}
+    </div>
+
+    <!-- 引入依赖的 js 文件 -->
+    <!-- <script src="./js/Watcher.js"></script>
+    <script src="./js/Observer.js"></script>
+    <script src="./js/Compile.js"></script>
+    <script src="./js/CompileUtil.js"></script>
+    <script src="./js/Dep.js"></script> -->
+    <script src="./mvvm.js"></script>
+    <script>
+      let vm = new MVVM({
+        el: "#app",
+        data: {
+          obj: { a: 1, b: 2 },
+          age: 16,
+          message: "hello world!",
+        },
+      });
+    </script>
+  </body>
+</html>
