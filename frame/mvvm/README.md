@@ -69,3 +69,7 @@ d2.addSub(
 );
 d2.notify();
 ```
+
+## 参考
+
+[聊聊对 Vue.js 框架的理解](https://mp.weixin.qq.com/s/7kbbLah-kcCRArNHUm3lpg)
