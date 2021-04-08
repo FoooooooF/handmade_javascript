@@ -2,7 +2,7 @@ const PENDING = "PENDING";
 const SUCCESS = "FULFILLED";
 const FAIL = "REJECTED";
 // 严谨 🇬应该判断 别人的promise 如果失败了就不能在调用成功 如果成功了不能在调用失败
-function resolvePromise(promise2, x,resolve,reject) { 
+function resolvePromise(promise2, x,resolve,reject) {
     if(promise2 === x){
        return reject(new TypeError('TypeError: Chaining cycle detected for promise #<Promise>'));
     }
@@ -11,16 +11,16 @@ function resolvePromise(promise2, x,resolve,reject) {
       try{
         let then = x.then;  // then 可能是getter object.defineProperty
         if(typeof then === 'function'){  // {then:null}
-           then.call(x,y=>{ 
+           then.call(x,y=>{
              if(called) return; // 1)
              called = true;
-              resolvePromise(promise2,y,resolve,reject); 
+              resolvePromise(promise2,y,resolve,reject);
            },r=>{
              if(called) return; // 2)
              called = true;
               reject(r);
-           }) 
-        }else{ 
+           })
+        }else{
           resolve(x);
         }
       }catch(e){
@@ -40,7 +40,7 @@ class Promise {
     this.reason = undefined;
     this.onResolvedCallbacks = [];
     this.onRejectedCallbacks = [];
-    const resolve = value => { 
+    const resolve = value => {
       if(value instanceof Promise){ // resolve的结果是一个promise
          return value.then(resolve,reject); // 那么会让这个promise执行，将执行后的结果在传递给 resolve或者reject中
       }
@@ -64,8 +64,8 @@ class Promise {
     }
   }
   then(onFulfilled, onRejected) { // .catch(function(){}) .then(null,function)
-  onFulfilled = typeof onFulfilled === 'function'?onFulfilled:val=>val;
-  onRejected =  typeof onRejected === 'function'?onRejected:err=>{throw err}
+    onFulfilled = typeof onFulfilled === 'function'?onFulfilled:val=>val;
+    onRejected =  typeof onRejected === 'function'?onRejected:err=>{throw err}
     // let promise2;
     let promise2 = new Promise((resolve, reject) => {
       if (this.status === SUCCESS) {
@@ -148,7 +148,7 @@ Promise.prototype.finally = function(callback){
   },(err)=>{
       return Promise.resolve(callback()).then(()=>{throw err}); // koa 原理
       // throw err;
-  }); 
+  });
 };
 // module.exports = Promise;
 // npm i promises-aplus-tests -g
